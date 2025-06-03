@@ -6,7 +6,6 @@ import br.com.fiap.nexus_response_api_teste.model.Token;
 import br.com.fiap.nexus_response_api_teste.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.core.token.TokenService;
 
 
 import org.springframework.security.core.userdetails.UserDetails;
