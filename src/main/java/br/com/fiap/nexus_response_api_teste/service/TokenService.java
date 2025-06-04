@@ -29,7 +29,7 @@ public class TokenService {
     public Token createToken(Usuario usuario){
         var token = JWT.create()
                 .withSubject(usuario.getId().toString())
-                .withClaim("email", usuario.getEmail())
+                .withClaim("email", usuario.getUsername())
                 .withClaim("papel", usuario.getPapel().toString())
                 .withExpiresAt(LocalDateTime.now().plusMinutes(DURATION).toInstant(ZoneOffset.ofHours(-3)))
                 .sign(ALG);
