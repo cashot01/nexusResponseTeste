@@ -27,7 +27,7 @@ public class EnvironmentalNodeController {
     @Cacheable("environmentalNodes")
     @Operation(description = "Listar todos os Environmental Node", tags = "environmental-nodes", summary = "Lista dos Environmentals Node")
     public List<EnvironmentalNode> index() {
-        log.info("Buscando todos os nós ambientais");
+        log.info("Buscando todos os Environmental Nodes");
         return repository.findAll();
     }
 
@@ -38,32 +38,32 @@ public class EnvironmentalNodeController {
             @ApiResponse(responseCode = "400", description = "Falha na validação")
     })
     public EnvironmentalNode create(@RequestBody @Valid EnvironmentalNode node) {
-        log.info("Cadastrando nó ambiental com temperatura média: " + node.getTempMedia());
+        log.info("Cadastrando Environmental Node com temperatura média: " + node.getTempMedia());
         return repository.save(node);
     }
 
     @GetMapping("{id}")
     public EnvironmentalNode get(@PathVariable Long id) {
-        log.info("Buscando nó ambiental com ID: " + id);
+        log.info("Buscando Environmental Node com ID: " + id);
         return getNode(id);
     }
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void destroy(@PathVariable Long id) {
-        log.info("Apagando nó ambiental com ID: " + id);
+        log.info("Apagando Environmental Node com ID: " + id);
         repository.delete(getNode(id));
     }
 
     @PutMapping("{id}")
     public EnvironmentalNode update(@PathVariable Long id, @RequestBody @Valid EnvironmentalNode node) {
-        log.info("Atualizando nó ambiental com ID: " + id + " - Nova temperatura média: " + node.getTempMedia());
+        log.info("Atualizando Environmental Node com ID: " + id + " - Nova temperatura média: " + node.getTempMedia());
         node.setIdEnvironmentalNode(id);
         return repository.save(node);
     }
 
     private EnvironmentalNode getNode(Long id) {
         return repository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Nó ambiental não encontrado"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Environmental Node não encontrado"));
     }
 }
