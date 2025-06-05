@@ -22,7 +22,7 @@ public class EnvironmentalNode {
 
     @NotNull(message = "temperatura media obrigatoria")
     @Column(name = "temp_media", nullable = false)
-    private Number tempMedia;
+    private Double tempMedia;
 
     @NotNull(message = "temperatura dispositivo obrigatorio")
     @Column(name = "temp_dispositivo", nullable = false)

@@ -78,7 +78,7 @@ public class DatabaseSeeder {
     } */
     @PostConstruct
     public void init() {
-        // Usuários
+        // Usuarios
         var usuarios = List.of(
                 Usuario.builder().nome("Cauan Passos").email("cauan.passos@gmail.com").senha("senha123").papel(UsuarioPapel.ADM).cpf("12345678901").build(),
                 Usuario.builder().nome("Mateus Henrique").email("mateus.henrique@gmail.com").senha("nexus2025").papel(UsuarioPapel.ADM).cpf("10987654321").build(),
@@ -88,7 +88,7 @@ public class DatabaseSeeder {
         );
         usuarioRepository.saveAll(usuarios);
 
-        // Status da Água
+        // StatusAgua
         var statusAgua = List.of(
                 StatusAgua.builder().descricaoAgua(TipoStatusAgua.BAIXO).build(),
                 StatusAgua.builder().descricaoAgua(TipoStatusAgua.MODERADO).build(),
@@ -97,7 +97,7 @@ public class DatabaseSeeder {
         );
         statusAguaRepository.saveAll(statusAgua);
 
-        // Nível de Urgência
+        // NívelUrgência
         var nivelUrgencia = List.of(
                 NivelUrgencia.builder().descricaoNivel(TipoNivelUrgencia.BAIXO).build(),
                 NivelUrgencia.builder().descricaoNivel(TipoNivelUrgencia.MEDIO).build(),
@@ -106,7 +106,7 @@ public class DatabaseSeeder {
         );
         nivelUrgenciaRepository.saveAll(nivelUrgencia);
 
-        // Localizações
+        // LocationTrackers
         var locations = List.of(
                 LocationTracker.builder().latitude("-23.5505").longitude("-46.6333").data(LocalDate.parse("2023-10-01")).usuario(usuarios.get(0)).build(),
                 LocationTracker.builder().latitude("-24.5155").longitude("-49.6933").data(LocalDate.parse("2023-11-11")).usuario(usuarios.get(1)).build(),
@@ -116,7 +116,7 @@ public class DatabaseSeeder {
         );
         locationTrackerRespository.saveAll(locations);
 
-        // Nós Ambientais
+        // EnvinonmentalNodes
         var nodes = List.of(
                 EnvironmentalNode.builder()
                         .tempMedia(25.5).tempDispositivo(26.0).umidade(15.0).nivelAgua(15.0)
