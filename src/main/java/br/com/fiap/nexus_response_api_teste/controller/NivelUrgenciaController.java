@@ -56,6 +56,7 @@ public class NivelUrgenciaController {
     }
 
     @PutMapping("{id}")
+    @CacheEvict(value = "nivelUrgencia")
     public NivelUrgencia update(@PathVariable Long id, @RequestBody @Valid NivelUrgencia nivel) {
         log.info("Atualizando nível de urgência com ID: " + id + " - Nova descrição: " + nivel.getDescricaoNivel());
         nivel.setIdNivelUrgencia(id);

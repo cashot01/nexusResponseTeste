@@ -58,6 +58,7 @@ public class StatusAguaController{
     }
 
     @PutMapping("{id}")
+    @CacheEvict(value = "statusAgua", allEntries = true)
     public StatusAgua update(@PathVariable Long id, @RequestBody @Valid StatusAgua status) {
         log.info("Atualizando status da água com ID: " + id + " - Nova descrição: " + status.getDescricaoAgua());
         status.setIdStatusAgua(id);

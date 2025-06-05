@@ -20,6 +20,8 @@ import java.util.List;
 @Slf4j
 public class EnvironmentalNodeController {
 
+    //public record EnvironmentalNodeFilter();
+
     @Autowired
     private EnvironmentalNodeRepository repository;
 
@@ -56,6 +58,7 @@ public class EnvironmentalNodeController {
     }
 
     @PutMapping("{id}")
+    @CacheEvict(value = "environmentalNodes", allEntries = true)
     public EnvironmentalNode update(@PathVariable Long id, @RequestBody @Valid EnvironmentalNode node) {
         log.info("Atualizando Environmental Node com ID: " + id + " - Nova temperatura média: " + node.getTempMedia());
         node.setIdEnvironmentalNode(id);

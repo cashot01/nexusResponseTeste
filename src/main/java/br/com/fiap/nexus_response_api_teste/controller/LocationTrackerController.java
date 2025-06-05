@@ -56,6 +56,7 @@ public class LocationTrackerController {
     }
 
     @PutMapping("{id}")
+    @CacheEvict(value = "locations", allEntries = true)
     public LocationTracker update(@PathVariable Long id, @RequestBody @Valid LocationTracker location) {
         log.info("Atualizando localização com ID: " + id + " - Nova latitude: " + location.getLatitude());
         location.setIdLocation(id);
