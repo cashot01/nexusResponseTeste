@@ -1,6 +1,7 @@
 package br.com.fiap.nexus_response_api_teste.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,6 +24,7 @@ public class NivelUrgencia {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "descricao_nivel", nullable = false, length = 50)
+    @NotNull(message = "descricao nivel obrigatorio")
     private TipoNivelUrgencia descricaoNivel;
 
     @OneToMany(mappedBy = "nivelUrgencia", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

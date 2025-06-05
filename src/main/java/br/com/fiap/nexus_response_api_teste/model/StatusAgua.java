@@ -2,6 +2,7 @@ package br.com.fiap.nexus_response_api_teste.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,7 +24,7 @@ public class StatusAgua {
     private Long idStatusAgua;
 
     @Enumerated(EnumType.STRING)
-    @NotBlank(message = "descrição agua obrigatorio")
+    @NotNull(message = "descrição agua obrigatorio")
     @Column(name = "descricao_agua", nullable = false, length = 20)
     private TipoStatusAgua descricaoAgua;
 
