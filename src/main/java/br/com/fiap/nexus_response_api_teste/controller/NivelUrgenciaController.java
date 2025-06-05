@@ -16,7 +16,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
-@RequestMapping("nivelUrgencia")
+@RequestMapping("/nivelUrgencia")
 @Slf4j
 public class NivelUrgenciaController {
 

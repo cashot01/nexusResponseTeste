@@ -19,7 +19,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
-@RequestMapping("statusAgua")
+@RequestMapping("/statusAgua")
 @Slf4j
 public class StatusAguaController{
     @Autowired
