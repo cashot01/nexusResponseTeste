@@ -1,6 +1,7 @@
 package br.com.fiap.nexus_response_api_teste.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -45,5 +46,6 @@ public class LocationTracker {
     private Usuario usuario;
 
     @OneToMany(mappedBy = "locationTracker", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<EnvironmentalNode> environmentalNodes;
 }

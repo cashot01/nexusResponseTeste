@@ -1,5 +1,6 @@
 package br.com.fiap.nexus_response_api_teste.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -29,5 +30,6 @@ public class StatusAgua {
     private TipoStatusAgua descricaoAgua;
 
     @OneToMany(mappedBy = "statusAgua", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<EnvironmentalNode> environmentalNodes;
 }

@@ -1,5 +1,6 @@
 package br.com.fiap.nexus_response_api_teste.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -46,6 +47,7 @@ public class Usuario /*implements UserDetails*/ {
     private UsuarioPapel papel;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<EnvironmentalNode> environmentalNodes;
 
     /*@Override
