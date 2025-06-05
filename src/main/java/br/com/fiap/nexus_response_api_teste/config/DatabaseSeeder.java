@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 import java.util.List;
 
-@Component
+/*@Component
 public class DatabaseSeeder {
 
     @Autowired
@@ -76,7 +76,7 @@ public class DatabaseSeeder {
         environmentalNodeRepository.saveAll(environmentalNode);
 
     } */
-    @PostConstruct
+    /*@PostConstruct
     public void init() {
         // Usuarios
         var usuarios = List.of(
@@ -157,4 +157,4 @@ public class DatabaseSeeder {
         environmentalNodeRepository.saveAll(nodes);
     }
 
-}
+} */
