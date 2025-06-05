@@ -4,7 +4,7 @@ import br.com.fiap.nexus_response_api_teste.model.*;
 import br.com.fiap.nexus_response_api_teste.repository.*;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
+
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -28,8 +28,7 @@ public class DatabaseSeeder {
     @Autowired
     private EnvironmentalNodeRepository environmentalNodeRepository;
 
-    /*@Autowired
-    private PasswordEncoder passwordEncoder;*/
+
 
     @PostConstruct
     public void init() {
