@@ -80,11 +80,11 @@ public class DatabaseSeeder {
     public void init() {
         // Usuarios
         var usuarios = List.of(
-                Usuario.builder().nome("Cauan Passos").email("cauan.passos@gmail.com").senha("senha123").papel(UsuarioPapel.ADM).cpf("12345678901").build(),
-                Usuario.builder().nome("Mateus Henrique").email("mateus.henrique@gmail.com").senha("nexus2025").papel(UsuarioPapel.ADM).cpf("10987654321").build(),
-                Usuario.builder().nome("Lucas Fialho").email("lucas.fialho@gmail.com").senha("responseFialho25").papel(UsuarioPapel.ADM).cpf("00011122233").build(),
-                Usuario.builder().nome("João Silva").email("joao.silva@gmail.com").senha("silvaresponse01").papel(UsuarioPapel.USUARIO).cpf("99988877766").build(),
-                Usuario.builder().nome("Maria Clara").email("maria.clara@gmail.com").senha("claranexus2").papel(UsuarioPapel.USUARIO).cpf("12378995124").build()
+                Usuario.builder().nome("Cauan Passos").email("cauan.passos@gmail.com").senha("senha123").papel(UsuarioPapel.ADMIN).cpf("12345678901").build(),
+                Usuario.builder().nome("Mateus Henrique").email("mateus.henrique@gmail.com").senha("nexus2025").papel(UsuarioPapel.ADMIN).cpf("10987654321").build(),
+                Usuario.builder().nome("Lucas Fialho").email("lucas.fialho@gmail.com").senha("responseFialho25").papel(UsuarioPapel.ADMIN).cpf("00011122233").build(),
+                Usuario.builder().nome("João Silva").email("joao.silva@gmail.com").senha("silvaresponse01").papel(UsuarioPapel.USER).cpf("99988877766").build(),
+                Usuario.builder().nome("Maria Clara").email("maria.clara@gmail.com").senha("claranexus2").papel(UsuarioPapel.USER).cpf("12378995124").build()
         );
         usuarioRepository.saveAll(usuarios);
 
