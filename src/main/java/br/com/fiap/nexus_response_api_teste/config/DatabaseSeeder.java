@@ -2,15 +2,18 @@ package br.com.fiap.nexus_response_api_teste.config;
 
 import br.com.fiap.nexus_response_api_teste.model.*;
 import br.com.fiap.nexus_response_api_teste.repository.*;
-import jakarta.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.boot.CommandLineRunner;
 
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
-@Component
+/*@Component
 public class DatabaseSeeder {
 
     @Autowired
@@ -76,7 +79,7 @@ public class DatabaseSeeder {
         environmentalNodeRepository.saveAll(environmentalNode);
 
     } */
-    @PostConstruct
+    /*@PostConstruct
     public void init() {
         // Usuarios
         var usuarios = List.of(
@@ -155,6 +158,127 @@ public class DatabaseSeeder {
                         .build()
         );
         environmentalNodeRepository.saveAll(nodes);
+    } */
+
+@Component
+public class DatabaseSeeder implements CommandLineRunner {
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private NivelUrgenciaRepository nivelUrgenciaRepository;
+
+    @Autowired
+    private StatusAguaRepository statusAguaRepository;
+
+    @Autowired
+    private LocationTrackerRespository locationTrackerRepository;
+
+    @Autowired
+    private EnvironmentalNodeRepository environmentalNodeRepository;
+
+
+    @Override
+    public void run(String... args) throws Exception {
+        seedNivelUrgencia();
+        seedStatusAgua();
+        seedUsuarios();
+        seedLocationTrackers();
+        seedEnvironmentalNodes();
     }
 
+    private void seedNivelUrgencia() {
+        if (nivelUrgenciaRepository.count() == 0) {
+            nivelUrgenciaRepository.save(NivelUrgencia.builder()
+                    .descricaoNivel(TipoNivelUrgencia.BAIXO)
+                    .build());
+            nivelUrgenciaRepository.save(NivelUrgencia.builder()
+                    .descricaoNivel(TipoNivelUrgencia.MEDIO)
+                    .build());
+            nivelUrgenciaRepository.save(NivelUrgencia.builder()
+                    .descricaoNivel(TipoNivelUrgencia.ALTO)
+                    .build());
+            nivelUrgenciaRepository.save(NivelUrgencia.builder()
+                    .descricaoNivel(TipoNivelUrgencia.CRITICO)
+                    .build());
+        }
+    }
+
+    private void seedStatusAgua() {
+        if (statusAguaRepository.count() == 0) {
+            statusAguaRepository.save(StatusAgua.builder()
+                    .descricaoAgua(TipoStatusAgua.BAIXO)
+                    .build());
+            statusAguaRepository.save(StatusAgua.builder()
+                    .descricaoAgua(TipoStatusAgua.MODERADO)
+                    .build());
+            statusAguaRepository.save(StatusAgua.builder()
+                    .descricaoAgua(TipoStatusAgua.ALTO)
+                    .build());
+            statusAguaRepository.save(StatusAgua.builder()
+                    .descricaoAgua(TipoStatusAgua.CRITICO)
+                    .build());
+        }
+    }
+
+    private void seedUsuarios() {
+        if (usuarioRepository.count() == 0) {
+            // Usuário administrador
+            usuarioRepository.save(Usuario.builder()
+                    .nome("Administrador")
+                    .cpf("12345678901")
+                    .email("admin@nexus.com")
+                    .senha("admin123")
+                    .papel(UsuarioPapel.ADM)
+                    .build());
+
+            // Usuário comum
+            usuarioRepository.save(Usuario.builder()
+                    .nome("João Silva")
+                    .cpf("98765432100")
+                    .email("joao@nexus.com")
+                    .senha("user123")
+                    .papel(UsuarioPapel.USUARIO)
+                    .build());
+        }
+    }
+
+    private void seedLocationTrackers() {
+        if (locationTrackerRepository.count() == 0) {
+            locationTrackerRepository.save(LocationTracker.builder()
+                    .latitude(new BigDecimal("-23.550520"))
+                    .longitude(new BigDecimal("-46.633308"))
+                    .data(LocalDate.now())
+                    .build());
+
+            locationTrackerRepository.save(LocationTracker.builder()
+                    .latitude(new BigDecimal("-22.906847"))
+                    .longitude(new BigDecimal("-43.172896"))
+                    .data(LocalDate.now())
+                    .build());
+        }
+    }
+
+    private void seedEnvironmentalNodes() {
+        if (environmentalNodeRepository.count() == 0) {
+            Usuario usuario = usuarioRepository.findUsuarioByEmail("joao@nexus.com").orElse(null);
+            NivelUrgencia nivelBaixo = nivelUrgenciaRepository.findByDescricaoNivel(TipoNivelUrgencia.BAIXO).orElse(null);
+            StatusAgua statusModerado = statusAguaRepository.findByDescricaoAgua(TipoStatusAgua.MODERADO).orElse(null);
+            LocationTracker location = locationTrackerRepository.findAll().get(0);
+
+            if (usuario != null && nivelBaixo != null && statusModerado != null) {
+                environmentalNodeRepository.save(EnvironmentalNode.builder()
+                        .tempMedia(new BigDecimal("25.5"))
+                        .tempDispositivo(new BigDecimal("26.0"))
+                        .umidade(new BigDecimal("65.0"))
+                        .nivelAgua(new BigDecimal("75.0"))
+                        .usuario(usuario)
+                        .nivelUrgencia(nivelBaixo)
+                        .statusAgua(statusModerado)
+                        .locationTracker(location)
+                        .build());
+            }
+        }
+    }
 }

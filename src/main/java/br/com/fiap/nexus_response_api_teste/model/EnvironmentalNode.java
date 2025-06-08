@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name = "TB_NEXUS_ENVIRONMENTAL_NODE")
 @Data
@@ -21,20 +23,20 @@ public class EnvironmentalNode {
     private Long idEnvironmentalNode;
 
     @NotNull(message = "temperatura media obrigatoria")
-    @Column(name = "temp_media", nullable = false)
-    private Double tempMedia;
+    @Column(name = "temp_media", nullable = false, precision = 5, scale = 2)
+    private BigDecimal tempMedia;
 
     @NotNull(message = "temperatura dispositivo obrigatorio")
-    @Column(name = "temp_dispositivo", nullable = false)
-    private Double tempDispositivo;
+    @Column(name = "temp_dispositivo", nullable = false, precision = 5, scale = 2)
+    private BigDecimal tempDispositivo;
 
     @NotNull(message = "umidade obrigatoria")
-    @Column(name = "umidade", nullable = false)
-    private Double umidade;
+    @Column(name = "umidade", nullable = false, precision = 5, scale = 2)
+    private BigDecimal umidade;
 
     @NotNull(message = "nivel da agua obrigatoria")
-    @Column(name = "nivel_agua", nullable = false)
-    private Double nivelAgua;
+    @Column(name = "nivel_agua", nullable = false, precision = 5, scale = 2)
+    private BigDecimal nivelAgua;
 
     @ManyToOne
     @JoinColumn(name = "id_usuario", nullable = false)
