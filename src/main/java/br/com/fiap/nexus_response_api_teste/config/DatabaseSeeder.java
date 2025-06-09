@@ -3,6 +3,7 @@ package br.com.fiap.nexus_response_api_teste.config;
 import br.com.fiap.nexus_response_api_teste.model.*;
 import br.com.fiap.nexus_response_api_teste.repository.*;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.boot.CommandLineRunner;
@@ -13,7 +14,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
-/*@Component
+@Component
 public class DatabaseSeeder {
 
     @Autowired
@@ -32,8 +33,7 @@ public class DatabaseSeeder {
     private EnvironmentalNodeRepository environmentalNodeRepository;
 
 
-
-    /*@PostConstruct
+    @PostConstruct
     public void init() {
         var usuarios = List.of(
                 Usuario.builder().nome("Cauan Passos").email("cauan.passos@gmail.com").senha(("senha123")).papel(UsuarioPapel.ADM).cpf("12345678901").build(),
@@ -70,15 +70,15 @@ public class DatabaseSeeder {
         locationTrackerRespository.saveAll(locationTrackrer);
 
         var environmentalNode = List.of(
-                EnvironmentalNode.builder().tempMedia(25.5).tempDispositivo(26.0).umidade(15.0).nivelAgua(15.0).build(),
-                EnvironmentalNode.builder().tempMedia(25.5).tempDispositivo(26.0).umidade(45.0).nivelAgua(35.0).build(),
-                EnvironmentalNode.builder().tempMedia(25.5).tempDispositivo(26.0).umidade(85.0).nivelAgua(70.0).build(),
-                EnvironmentalNode.builder().tempMedia(25.5).tempDispositivo(26.0).umidade(77.0).nivelAgua(89.0).build(),
-                EnvironmentalNode.builder().tempMedia(25.5).tempDispositivo(26.0).umidade(95.5).nivelAgua(98.8).build()
+                EnvironmentalNode.builder().tempMedia(BigDecimal.valueOf(25.5)).tempDispositivo(BigDecimal.valueOf(26.0)).umidade(BigDecimal.valueOf(15.0)).nivelAgua(BigDecimal.valueOf(15.0)).build(),
+                EnvironmentalNode.builder().tempMedia(BigDecimal.valueOf(25.5)).tempDispositivo(BigDecimal.valueOf(26.0)).umidade(BigDecimal.valueOf(45.0)).nivelAgua(BigDecimal.valueOf(35.0)).build(),
+                EnvironmentalNode.builder().tempMedia(BigDecimal.valueOf(25.5)).tempDispositivo(BigDecimal.valueOf(26.0)).umidade(BigDecimal.valueOf(85.0)).nivelAgua(BigDecimal.valueOf(70.0)).build(),
+                EnvironmentalNode.builder().tempMedia(BigDecimal.valueOf(25.5)).tempDispositivo(BigDecimal.valueOf(26.0)).umidade(BigDecimal.valueOf(77.0)).nivelAgua(BigDecimal.valueOf(89.0)).build(),
+                EnvironmentalNode.builder().tempMedia(BigDecimal.valueOf(25.5)).tempDispositivo(BigDecimal.valueOf(26.0)).umidade(BigDecimal.valueOf(95.5)).nivelAgua(BigDecimal.valueOf(98.8)).build()
         );
         environmentalNodeRepository.saveAll(environmentalNode);
 
-    } */
+    }
     /*@PostConstruct
     public void init() {
         // Usuarios
@@ -122,35 +122,35 @@ public class DatabaseSeeder {
         // EnvinonmentalNodes
         var nodes = List.of(
                 EnvironmentalNode.builder()
-                        .tempMedia(25.5).tempDispositivo(26.0).umidade(15.0).nivelAgua(15.0)
+                        .tempMedia(BigDecimal.valueOf(25.5)).tempDispositivo(BigDecimal.valueOf(26.0)).umidade(BigDecimal.valueOf(15.0)).nivelAgua(15.0)
                         .locationTracker(locations.get(0))
                         .nivelUrgencia(nivelUrgencia.get(0))
                         .statusAgua(statusAgua.get(0))
                         .usuario(usuarios.get(0))
                         .build(),
                 EnvironmentalNode.builder()
-                        .tempMedia(25.5).tempDispositivo(26.0).umidade(45.0).nivelAgua(35.0)
+                        .tempMedia(BigDecimal.valueOf(25.5)).tempDispositivo(BigDecimal.valueOf(26.0)).umidade(BigDecimal.valueOf(45.0)).nivelAgua(35.0)
                         .locationTracker(locations.get(1))
                         .nivelUrgencia(nivelUrgencia.get(1))
                         .statusAgua(statusAgua.get(1))
                         .usuario(usuarios.get(1))
                         .build(),
                 EnvironmentalNode.builder()
-                        .tempMedia(25.5).tempDispositivo(26.0).umidade(85.0).nivelAgua(70.0)
+                        .tempMedia(BigDecimal.valueOf(25.5)).tempDispositivo(BigDecimal.valueOf(26.0)).umidade(85.0).nivelAgua(70.0)
                         .locationTracker(locations.get(2))
                         .nivelUrgencia(nivelUrgencia.get(2))
                         .statusAgua(statusAgua.get(2))
                         .usuario(usuarios.get(2))
                         .build(),
                 EnvironmentalNode.builder()
-                        .tempMedia(25.5).tempDispositivo(26.0).umidade(77.0).nivelAgua(89.0)
+                        .tempMedia(BigDecimal.valueOf(25.5)).tempDispositivo(BigDecimal.valueOf(26.0)).umidade(77.0).nivelAgua(89.0)
                         .locationTracker(locations.get(3))
                         .nivelUrgencia(nivelUrgencia.get(3))
                         .statusAgua(statusAgua.get(3))
                         .usuario(usuarios.get(3))
                         .build(),
                 EnvironmentalNode.builder()
-                        .tempMedia(25.5).tempDispositivo(26.0).umidade(95.5).nivelAgua(98.8)
+                        .tempMedia(BigDecimal.valueOf(25.5)).tempDispositivo(BigDecimal.valueOf(26.0)).umidade(95.5).nivelAgua(98.8)
                         .locationTracker(locations.get(4))
                         .nivelUrgencia(nivelUrgencia.get(0))
                         .statusAgua(statusAgua.get(0))
@@ -159,8 +159,9 @@ public class DatabaseSeeder {
         );
         environmentalNodeRepository.saveAll(nodes);
     } */
+}
 
-@Component
+/*@Component
 public class DatabaseSeeder implements CommandLineRunner {
 
     @Autowired
@@ -281,4 +282,4 @@ public class DatabaseSeeder implements CommandLineRunner {
             }
         }
     }
-}
+} */

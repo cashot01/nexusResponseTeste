@@ -10,5 +10,5 @@ import java.util.Optional;
 
 @Repository
 public interface NivelUrgenciaRepository extends JpaRepository<NivelUrgencia, Long>, JpaSpecificationExecutor<NivelUrgencia> {
-    Optional<NivelUrgencia> findByDescricaoNivel(TipoNivelUrgencia descricaoNivel);
+
 }

@@ -11,5 +11,5 @@ import java.util.Optional;
 
 @Repository
 public interface StatusAguaRepository extends JpaRepository<StatusAgua, Long>, JpaSpecificationExecutor<StatusAgua> {
-    Optional<StatusAgua> findByDescricaoAgua(TipoStatusAgua descricaoAgua);
+
 }

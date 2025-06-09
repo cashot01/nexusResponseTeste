@@ -10,5 +10,5 @@ import java.util.List;
 
 @Repository
 public interface EnvironmentalNodeRepository extends JpaRepository<EnvironmentalNode, Long>, JpaSpecificationExecutor<EnvironmentalNode> {
-    List<EnvironmentalNode> findByUsuario(Usuario usuario);
+
 }

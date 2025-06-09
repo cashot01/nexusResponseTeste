@@ -28,13 +28,13 @@ public class LocationTracker {
     @Column(name = "id_location")
     private Long idLocation;
 
-    @NotNull(message = "latitude obrigatoria")
+    @NotBlank(message = "latitude obrigatoria")
     @Column(name = "latitude", nullable = false, precision = 9, scale = 6)
-    private BigDecimal latitude;
+    private String latitude;
 
-    @NotNull(message = "longitude obrigatoria")
+    @NotBlank(message = "longitude obrigatoria")
     @Column(name = "longitude", nullable = false, precision = 9, scale = 6)
-    private BigDecimal longitude;
+    private String longitude;
 
     @Column(name = "data", nullable = false)
     @NotNull(message = "Data obrigatoria")
